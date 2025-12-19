@@ -11,8 +11,10 @@ int main() {
 
     ifstream ReadSysLog("/var/log/system.log");
 
-    getline(ReadSysLog, logLine, '\n');
-    cout << logLine << endl; 
+    for (int i = 0; i < 100; i ++) {
+        getline(ReadSysLog, logLine, '\n');
+        cout << logLine << endl; 
+    }
     
     return 0; 
 }
