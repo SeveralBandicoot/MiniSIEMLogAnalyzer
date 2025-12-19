@@ -1,18 +1,18 @@
 CC=clang++
 
-compile_all: compile_main compile_logparser compile_alertengine compile_hashtable compile_filereader
+compile_all: compile_m compile_lp compile_ae compile_ht compile_fr
 
-compile_main: main.cpp 
+compile_m: main.cpp 
 	$(CC) main.cpp -o main
 
-compile_logparser: logParser.cpp
+compile_lp: logParser.cpp
 	$(CC) logParser.cpp -o logParser
 
-compile_alertengine: AlertEngine.cpp
+compile_ae: AlertEngine.cpp
 	$(CC) AlertEngine.cpp -o AlertEngine
 
-compile_hashtable: HashTable.cpp
+compile_ht: HashTable.cpp
 	$(CC) HashTable.cpp -o HashTable
 
-compile_filereader: FileReader.cpp
+compile_fr: FileReader.cpp
 	$(CC) FileReader.cpp -o FileReader
