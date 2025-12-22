@@ -30,10 +30,18 @@ void logParser(string& rawData) {
         dt << word; // append each word 
     }
     //----extract date and time from timestamp vector----
-    string entireStream = dt.str();
-    string date = entireStream.substr(5, 10);
-    string time = entireStream.substr(20);
+    string entireDTStream = dt.str();
+    string date = entireDTStream.substr(5, 10);
+    string time = entireDTStream.substr(20);
     string timeStamp = date + "T" + time +"Z";
     
     entry.timestamp = timeStamp; // assign concatenated timestamp to the log entries timestamp defined in LogEntry.h
+
+    //----extract and assign level----
+    //cout << ss.str() << endl; // print entire raw data
+    string entireLevelStream = tokens[5];
+    entireLevelStream = entireLevelStream.substr(6);
+    entry.level = entireLevelStream; 
+
+    
 }
