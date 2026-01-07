@@ -7,6 +7,14 @@
 
 using namespace std; 
 
+void printLog(LogEntry &entry) {
+    cout << "\"timestamp\": " << entry.timestamp << endl; 
+    cout << "\"level\": " << entry.level << endl; 
+    cout << "\"message\": " << entry.message << endl;
+    cout << "\"user_id\": " << entry.user_id << endl;   
+    cout << "\"user_agent\": " << entry.user_agent << endl; 
+}
+
 void logParser(string& rawData) {
     LogEntry entry; 
 
@@ -64,8 +72,20 @@ void logParser(string& rawData) {
     msgStream = msgStream.substr(4);
     entry.message = msgStream;
 
-    // REQUEST ID
+    // USER ID
+    string userIdStream = tokens[12];
+    userIdStream = userIdStream.substr(5);
+    entry.user_id = userIdStream; 
 
+    // USER AGENT 
+    string userAgentStream = tokens[13];
+    userAgentStream = userAgentStream.substr(3);
+    entry.user_agent = userAgentStream;
+
+    // PRINTS JSON LOG
+    printLog(entry);
+
+    //cout << entry.user_agent << endl; 
     /*for (string word : tokens) { // prints out tokens vector line by line (element by element)
         cout << word << endl;
     }*/
